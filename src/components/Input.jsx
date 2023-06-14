@@ -1,12 +1,13 @@
 import MemeData from "/src/assets/MemeData";
-let url;
+import React from "react";
+// let url;
 function Inputs() {
+  const [memeImage, setMemeImage] = React.useState("");
+
   function getMemeImg() {
     const MemeArr = MemeData.data.memes; //creating array of MemeData.jsx
     const RandomNum = Math.floor(Math.random() * MemeArr.length); //genrate no. in meme array
-    const url = MemeArr[RandomNum].url; //url of random no.
-    console.log(url);
-    return url;
+    setMemeImage(MemeArr[RandomNum].url);
   }
 
   return (
@@ -29,7 +30,7 @@ function Inputs() {
         >
           Get a new meme image
         </button>
-        <p>{url}</p>
+        <img src={memeImage} />
       </form>
     </>
   );
